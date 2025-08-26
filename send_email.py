@@ -1,7 +1,7 @@
-# send_email.py (UPDATED TO USE GMAIL API)
+# send_email.py (UPDATED)
 import base64
 from email.mime.text import MIMEText
-from fetch_emails import authenticate_gmail  # Reuse the authentication
+from fetch_emails import authenticate_gmail
 
 def create_message(to, subject, message_text):
     """Create a message for an email."""
@@ -23,6 +23,8 @@ def send_email(to_address, subject, body):
         
         print(f"✅ Email successfully sent to {to_address}")
         print(f"Message Id: {sent_message['id']}")
+        return True
         
     except Exception as error:
         print(f'❌ Failed to send email: {error}')
+        return False
